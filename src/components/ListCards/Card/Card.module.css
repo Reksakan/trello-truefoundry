@@ -1,0 +1,80 @@
+.ListCard_MainContainer {
+  min-width: 272px;
+  width: 272px;
+  height: auto;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  background-color: #ebecf0;
+  margin: 0 4px;
+  border-radius: 3px;
+  padding: 10px 8px 8px;
+}
+
+.ListCard_MainContainer::-webkit-scrollbar {
+  width: 12px;
+}
+
+.ListCard_MainContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,.18);
+  border-radius: 3px;
+}
+
+.ListCard_MainContainer::-webkit-scrollbar-track {
+  background-color: rgba(0,0,0,.1);
+}
+
+.ListCard_TitleWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  overflow-y: auto; 
+}
+
+.ListCard_Title {
+  margin: 0;
+  color: #172b4d;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 4px 8px 10px;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.Plus_Icon {
+  width: 24px;
+  color: #5e6c84;
+  fill: #000000;
+}
+
+.ListCard_TaskListWrapper {
+  min-height: 2px;
+}
+
+.NewTaskCard_AddMoreWrapper {
+  display: flex;
+  align-items: center;
+  color: #5e6c84;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 2px 0;
+  cursor: pointer;
+}

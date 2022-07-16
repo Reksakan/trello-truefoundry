@@ -1,0 +1,171 @@
+/* Header Container*/
+
+.topBar_MainContainer {
+  background-color: #004269;
+  height: 44px;
+  padding: 6px 4px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Header - Left menu */
+
+.topBar_LeftMenu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.Button_ButtonWrapper {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.Button_ButtonWrapper:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.Button_DarkButton {
+  width: -webkit-max-content;
+  width: max-content;
+  color: #fff;
+  font-size: 14px;
+  background-color: rgba(0,0,0,.24);
+  padding: 0 12px;
+  margin-left: 12px;
+}
+
+.topBar_MenuItem:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.topBar_MenuItem:first-of-type {
+  padding: 0 8px;
+}
+
+.topBar_MenuItem {
+  padding: 0 12px;
+  border-radius: 3px;
+  color: #fff;
+  height: 32px;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.topBar_Logo {
+  background-image: url(data:image/gif;base64,R0lGODlhOAFAAPABAAAAAP///yH5BAUAAAAAIf8LSW1hZ2VNYWdpY2sNZ2FtbWE9MC40NTQ1NQAsAAAAADgBQAAAAv6EH6nL7Q/dmbTai7PevPsPYpHSjUGIpojJtu6pxvJM1x5bjvY+vf4v4QmHxCKOYyrSgMym8gmNIpPTiBTVzAKv3K7yuKF6q9qyOGb2jddgzXktSssfy3kbLr3HrfiM/U8yA6jTd6V38VbYM2hXxxikCHVokRgJ8DjniLlgKVlJSdi5slmmSQojSjRZ8al4Wir4mpBq1Eph24c7CukWiiaLSsuzeusratzb8IGMBSw8RLzIR8u8x7A8/Sv7LBS9Sydcjcgblq0CHMxtCl5u3ikOqnzj3rwdPlvjbaCbwtlPb81fDgiG9LGqJi9EC20ADzZUuHAgOzICKSb0xM+huf6JFg1qJNjxmgwmIQNJrNiO4xeP0rKBLBkRG7yWKmU68fPwo0mY6VZmLBYq5zeSNl8mMwoiDU6kR1E2vfgkZlFwM/fJmVfVqtBxV+PVDLgzJTmfWXVK0PXn5FezIpOmZRv2KT61bTGWBWoF1yCec+XWpasU79ilf/3GrfWT5k2ubw07ZbwWciPBUP1OLYz4rmKiXgGJjbwZM9jGWkFT7vtZNDSWQzmfnvYidWXJs0eT1mw69GFVrEtnof1Vaufcl+6e0o3aMlbi65gjjw1XtW/QBn9Cf80O92Dbu1cnbr0levfnPbE/Hl5b/PnpL7WnR7++W+/i1x2PJ18evHTygP7fs6e6FXiXxTfMfPXJtp9+8VVXFoNUuOefgsllFqB5CVqYH3zSOciUhhf+JxKEnuVhIGseEcNhbiwdISJpUZWoGYj3YZghfQHyYyIhLU4WhXD9EejhhMDtl+J2GEKkw46ZkPidjDOq9yOBRUZoo3NOzqJkVz3CWKGEu/1gn5BQIvgkjVVS6aUWBTV5ppHcuRikmEeGWeOQnGQZ2JZs9vYKmWWi1SQOeJqxZoxX1hlnnoR1GKefctpJwqCw6Glom2jip2aUj3rpKKLqnSBpppR2mSaSey3H6JhhmkpQqL8xWSmfI7rVYFaBJuHqYnaReiir5PD6qaZ8+XpWl5gUCv6srMD+U+tWOfKR0SbIprqolZZ+GEuz1JaKKoDogAlrsrdWWs+Ntp744LfgjrotpJsmyq6b/PHl6bUhqqtGuO3CS6y8zaGpj4+fooJvvvH6yy+tbFrVqacC0yinC2kWXOa/l+LH7IpArjvwegceahLFEutrrb0VQ1xZVeF13N1xE4s8bcnzgfxqtZNwzLKuIj/sXawLm0wonbXhjLKuQO9cr8XYYnzOI/SqZrC7Nb9MccwIB8sQnIlC/XHOHyP9c78Xc5v1kg2P17XXN4NdctN7hk112jnbvO/RcrPddsbikqu2dSO/ia2iUuPbBc90L3224Vs3rPDKibtcOJd1Dx4YNeVAXlnu3+pszrnQJ6em97uAf9556aafXosKBQAAOw==);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 0 9px;
+  width: 75px;
+  height: 15px;
+  padding: 8px 0;
+  cursor: pointer;
+  margin: 0;
+}
+
+.topBar_ArrowDown {
+  width: 10px;
+  margin-left: 6px;
+}
+
+/* Header - Right menu */
+
+.topBar_RightMenu {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.topBar_SearchWrapper {
+  position: relative;
+  margin-right: 8px;
+}
+
+.topBar_SearchWrapper > span {
+  position: absolute;
+  left: 5px;
+  top: 7px;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  color: hsla(0,0%,100%,.8);
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.topBar_SearchInput {
+  width: 250px;
+  height: 32px;
+  border: 1px solid hsla(0,0%,100%,.25);
+  border-radius: 3px;
+  background-color: hsla(0,0%,100%,.3);
+  color: hsla(0,0%,100%,.5);
+  padding-left: 30px;
+  outline: none;
+}
+
+.topBar_SearchInput::placeholder {
+  color:#fff;
+}
+
+#placeholder::-webkit-input-placeholder {
+  display: block !important;
+}
+
+#search-clear::-webkit-search-cancel-button {
+  opacity: 0; 
+  pointer-events: none;
+}
+
+.Button_Icon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 2px;
+  padding-right: 8px;
+}
+
+.UserAvatar_DefultAvatar {
+  color: #172b4d;
+  background-color: #dfe1e6;
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: 700;
+  margin-left: 4px;
+}
