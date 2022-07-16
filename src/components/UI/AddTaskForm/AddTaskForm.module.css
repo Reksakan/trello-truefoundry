@@ -1,0 +1,93 @@
+.NewTaskCard_PlusIcon {
+  display: flex;
+  align-content: center;
+}
+
+.Plus_Icon {
+  width: 24px;
+  color: #5e6c84;
+}
+
+.ListCard_TaskListWrapper {
+  min-height: 2px;
+}
+
+.ListCards_NewListCard_AddMoreWrapper {
+  display: flex;
+  align-items: center;
+  color: #5e6c84;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 2px 0;
+  cursor: pointer;
+}
+
+.hidden {
+  display:none;
+}
+
+.ListCards_NewListCard_AddMoreWrapper:hover {
+  background-color: rgba(94, 108, 132, 0.2);
+  color: black;
+}
+
+.NewTaskCard_InputBox {
+  width: 100%;
+  background-color: #fff;
+  border: 2px solid #0079bf;
+  border-radius: 3px;
+  outline: none;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}
+
+.NewTaskCard_ButtonWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.NewTaskCard_ButtonWrapper > span {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  color: #42526e;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.Button_ButtonWrapper {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.Button_Primary {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  width: max-content;
+  color: #fff;
+  background-color: #0079bf;
+  padding: 0 12px;
+}
+
+.Button_Label {
+  font-size: 14px;
+}
+
+.NewTaskCard_CloseIconWrapper {
+  display: flex;
+  align-content: center;
+}

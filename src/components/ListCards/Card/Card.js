@@ -1,7 +1,6 @@
 import Task from '../Task/Task'
 import styles from './Card.module.css'
-import Icon from "@mdi/react"
-import { mdiPlus } from '@mdi/js'
+import AddTaskForm from '../../UI/AddTaskForm/AddTaskForm'
 
 const Card = ({ cardId, cardName, cardTasks }) => {
   return (
@@ -15,10 +14,7 @@ const Card = ({ cardId, cardName, cardTasks }) => {
           <Task key={task.taskId} task={task}/>
         ))}
       </div>
-      <div className={styles.NewTaskCard_AddMoreWrapper}>
-        <span className="material-icons"><Icon path={mdiPlus} title="Dog" size={1}/></span>
-        Add Card
-      </div>
+      <AddTaskForm />
     </div>
   )
 }
