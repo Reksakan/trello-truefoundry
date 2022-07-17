@@ -8,6 +8,7 @@ const defaultCardsState = [...LISTS_CARDS]
 const cardsReducer = (state, action) => {
   switch(action.type) {
     case 'ADD_TASK' : {
+      //Minimized the code: Should be brought separately in Helpers
       const cardToUpdate = state.filter(cardToChange => cardToChange.id === action.cardId)[0]
       const indexOfUpdatedCard = state.indexOf(cardToUpdate)
       const updatedCard = {
@@ -28,7 +29,12 @@ const cardsReducer = (state, action) => {
       return newState
     }
     case 'ADD_CARD' : {
-      return defaultCardsState
+       const newState = state.concat({
+        id: action.newCardID,
+        cardName: action.newCard,
+        tasks: [],
+       })
+      return newState
     }
     default: return defaultCardsState
   }  
@@ -39,7 +45,6 @@ const TasksProvider = props => {
   const [ cardsState, dispatchCardsState ] = useReducer(cardsReducer, defaultCardsState)
 
   const addTaskToCard = ({cardId, newTaskID, newTask}) => {
-    console.log(`cardID is ${cardId} and taskID is ${newTaskID} with the task is ${newTask}`)  // DELETE
     dispatchCardsState({
       type: 'ADD_TASK', 
       cardId: cardId,
@@ -48,9 +53,9 @@ const TasksProvider = props => {
     })
   }
 
-  const addCardToList = (card) => {
-    console.log('addCardToList is triggered')
-    // dispatchCardsState({type: 'ADD_CARD', card: card})
+  const addCardToList = ({newCardID, newCard}) => {
+    console.log('new card ID and new card description are:', newCardID + newCard)       //DELETE
+    dispatchCardsState({type: 'ADD_CARD', newCardID: newCardID, newCard: newCard})
   }
 
   const cardsContext = {
@@ -67,27 +72,3 @@ const TasksProvider = props => {
 }
 
 export default TasksProvider
-
-
-
-
-
-/***
-import React, { useState, useReducer, createContext} from 'react'
-import LISTS_CARDS from "./data";
-
-export const TasksContext = createContext()
-
-const TasksProvider = props => {
-  const [cards, setCards] = useState([...LISTS_CARDS])
-  
-  return (
-    <TasksContext.Provider value={[cards, setCards]}>
-      {props.children}
-    </TasksContext.Provider>
-  )
-}
-
-export default TasksProvider 
-
-* ***/

@@ -17,6 +17,15 @@
   padding: 10px 8px 8px;
 }
 
+.NewListCard_NewListWrapper > * {
+  color: #fff;
+}
+
+.NewListCard_NewListWrapper:hover > * {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 .NewListCard_AddMoreWrapper {
   display: flex;
   align-items: center;
