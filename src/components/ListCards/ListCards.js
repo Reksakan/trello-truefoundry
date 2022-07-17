@@ -7,11 +7,11 @@ import Icon from "@mdi/react"
 import { mdiPlus } from '@mdi/js'
 
 const ListCards = () => {
-const [cards, setCards] = useContext(TasksContext)
+const {cardsState} = useContext(TasksContext)
 
   return (
   <div className={styles.BoardPage_ListWrapper}>
-    {cards?.map(card => (
+    {cardsState?.map(card => (
       <Card key={uuidv4()} cardId={card.id} cardName={card.cardName} cardTasks={card.tasks}/>
     ))}
     <div className={styles.NewListCard_NewListWrapper}>

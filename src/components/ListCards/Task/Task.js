@@ -1,7 +1,6 @@
 import styles from './Task.module.css'
 
 const Task = ({task}) => {
-  console.log('task complexity: ', task.isHard)
   return (
     <div draggable className={styles.ListCard_TaskCardWrapper} id={task.taskId}>
       <div className={styles.TaskCard_MainContainer}>

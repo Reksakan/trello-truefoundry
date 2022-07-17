@@ -14,7 +14,7 @@ const Card = ({ cardId, cardName, cardTasks }) => {
           <Task key={task.taskId} task={task}/>
         ))}
       </div>
-      <AddTaskForm />
+      <AddTaskForm cardId={cardId}/>
     </div>
   )
 }
