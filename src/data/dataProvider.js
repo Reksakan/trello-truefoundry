@@ -1,42 +1,128 @@
 import React, { useState, useReducer, createContext} from 'react'
 import LISTS_CARDS from "./data";
+import {v4 as uuidv4} from 'uuid'
 
 export const TasksContext = createContext()
 
 const defaultCardsState = [...LISTS_CARDS]
 
+export const ACTION_TYPES = {
+  ADD_TASK: 'ADD_TASK',
+  ADD_CARD: 'ADD_CARD',
+  DRAG_TASK: 'DRAG_TASK',
+  DRAG_CARD: 'DRAG_CARD',
+}
+
+const addCardAction = (cardName) => {
+  const cardId = uuidv4()
+  return { type: ACTION_TYPES.ADD_CARD, cardId, cardName }
+}
+
+const addTaskAction = (cardId, taskName) => {
+  const taskId = uuidv4()
+  return { type: ACTION_TYPES.ADD_TASK, cardId, taskId, taskName }
+}
+
+const dragTaskAction = ({ cardIdFrom, cardIdTo, taskId }) => {
+  return {
+    type: ACTION_TYPES.DRAG_TASK,
+    cardIdFrom, cardIdTo, taskId
+  }
+}
+
+
 const cardsReducer = (state, action) => {
   switch(action.type) {
-    case 'ADD_TASK' : {
-      //Minimized the code: Should be brought separately in Helpers
-      const cardToUpdate = state.filter(cardToChange => cardToChange.id === action.cardId)[0]
-      const indexOfUpdatedCard = state.indexOf(cardToUpdate)
+    case ACTION_TYPES.ADD_TASK : {
+      const  { cardId, taskId, taskName } = action
+      const cardIndex = state.findIndex(({ id }) => cardId === id);
+      const card = state[cardIndex]
+
       const updatedCard = {
-        id: cardToUpdate.id,
-        cardName: cardToUpdate.cardName,
+        ...card,
         tasks: [
-          ...cardToUpdate.tasks, 
+          ...card.tasks,
           {
-            taskId: action.newTaskID,
-            taskName: action.newTask,
-            isHard: false}] 
+            taskId,
+            taskName,
+            isHard: false
+          },
+        ]
       }
-      const newState = [
-        ...state.slice(0, indexOfUpdatedCard),
+      const updatedState = [
+        ...state.slice(0, cardIndex),
         updatedCard,
-        ...state.slice(indexOfUpdatedCard + 1)
+        ...state.slice(cardIndex + 1)
       ]
-      return newState
+      return updatedState
     }
-    case 'ADD_CARD' : {
-       const newState = state.concat({
-        id: action.newCardID,
-        cardName: action.newCard,
+
+    case ACTION_TYPES.ADD_CARD : {
+      const { cardName, cardId } = action;
+      const newState = state.concat({
+        id: cardId,
+        cardName: cardName,
         tasks: [],
-       })
+      })
       return newState
     }
-    default: return defaultCardsState
+
+    case ACTION_TYPES.DRAG_CARD: {
+      const { cardId, position } = action
+      const card = state.find((id) => id === cardId)
+      const stateWithoutCard = state.filter((id) => id !== cardId)
+
+      const reorderedState = [
+        ...stateWithoutCard.slice(0, position),
+        card,
+        ...stateWithoutCard.slice(position)
+      ]
+
+      return reorderedState
+    }
+
+    case ACTION_TYPES.DRAG_TASK: {
+      const { cardIdFrom, cardIdTo, taskId: draggedTaskId } = action
+      const cardIndexFrom = state.findIndex(({id}) => id === cardIdFrom)
+      const cardFrom = state[cardIndexFrom];
+      const cardIndexTo = state.findIndex(({id}) => id === cardIdTo)
+      const cardTo = state[cardIndexTo]
+      
+      const task = cardFrom.tasks.find(({taskId: _taskId}) => _taskId === draggedTaskId);
+
+      const filteredTasks = cardFrom.tasks.filter(({taskId: _taskId}) => _taskId !== draggedTaskId);
+
+      const updatedCardTo = {
+        ...cardTo,
+        tasks: [
+          ...cardTo.tasks,
+          task,
+        ]
+      }
+
+      const updatedCardFrom = {
+        ...cardFrom,
+        tasks: filteredTasks
+      }
+
+      const updatedStateWithCardTo = [
+        ...state.slice(0, cardIndexTo),
+        updatedCardTo,
+        ...state.slice(cardIndexTo+1)
+      ]
+      
+      const updatedStateWithCardFrom = [
+        ...updatedStateWithCardTo.slice(0, cardIndexFrom),
+        updatedCardFrom,
+        ...updatedStateWithCardTo.slice(cardIndexFrom+1)
+      ]
+
+      return updatedStateWithCardFrom
+    }
+
+    default: {
+      return state
+    }
   }  
   
 }
@@ -44,24 +130,23 @@ const cardsReducer = (state, action) => {
 const TasksProvider = props => {
   const [ cardsState, dispatchCardsState ] = useReducer(cardsReducer, defaultCardsState)
 
-  const addTaskToCard = ({cardId, newTaskID, newTask}) => {
-    dispatchCardsState({
-      type: 'ADD_TASK', 
-      cardId: cardId,
-      newTaskID: newTaskID,
-      newTask: newTask
-    })
+  const addTask = (cardId, taskName) => {
+    dispatchCardsState(addTaskAction(cardId, taskName))
   }
 
-  const addCardToList = ({newCardID, newCard}) => {
-    console.log('new card ID and new card description are:', newCardID + newCard)       //DELETE
-    dispatchCardsState({type: 'ADD_CARD', newCardID: newCardID, newCard: newCard})
+  const addCard = (cardName) => {
+    dispatchCardsState(addCardAction(cardName))
+  }
+
+  const dragTask = ({ cardIdFrom, cardIdTo, taskId }) => {
+    dispatchCardsState(dragTaskAction({ cardIdFrom, cardIdTo, taskId }))
   }
 
   const cardsContext = {
     cardsState: cardsState,
-    addTask: addTaskToCard,
-    addCard: addCardToList,
+    addTask,
+    addCard,
+    dragTask,
   }
 
   return (

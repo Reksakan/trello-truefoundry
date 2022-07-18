@@ -1,6 +1,6 @@
-import Header from './components/Layout/Header'
-import Navbar from './components/Layout/Navbar'
-import Main from './components/Layout/Main'
+import Header from './components/Layout/Header/Header'
+import Navbar from './components/Layout/Navbar/Navbar'
+import Main from './components/Layout/Main/Main'
 import TasksProvider from './data/dataProvider'
 import styles from './App.css'
 

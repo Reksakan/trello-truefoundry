@@ -1,7 +1,7 @@
 import styles from './Header.module.css'
-import arrowDown from '../../assets/arrow-down.png'
-import buttonIconExlMark from '../../assets/button_icon.png'
-import buttonIconBell from '../../assets/button_icon_bell.png'
+import arrowDown from '../../../assets/arrow-down.png'
+import buttonIconExlMark from '../../../assets/button_icon.png'
+import buttonIconBell from '../../../assets/button_icon_bell.png'
 import Icon from "@mdi/react"
 import { mdiMagnify } from '@mdi/js'
 

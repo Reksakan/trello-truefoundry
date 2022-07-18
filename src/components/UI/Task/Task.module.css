@@ -1,4 +1,4 @@
-.ListCard_TaskCardWrapper {
+ .ListCard_TaskCardWrapper {
   margin: 8px 0;
 }
 
@@ -48,4 +48,17 @@
   font-weight: 400;
   line-height: 20px;
   color: #172b4d;
+ }
+
+ .currentTask {
+  background-color: #ebecf0;
+  border-radius: 3px;
+  box-shadow: none;
+  padding: 6px 8px 2px;
+  color:#ebecf0;
+  margin: 0 0 4px;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
 }

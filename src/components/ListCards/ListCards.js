@@ -1,46 +1,35 @@
 import React, { useState, useContext } from 'react'
 import {v4 as uuidv4} from 'uuid'
-import Card from './Card/Card'
+import Card from '../UI/Card/Card'
 import { TasksContext } from '../../data/dataProvider'
 import AddFeatureForm from '../UI/AddFeatureForm/AddFeatureForm'
 import styles from './ListCards.module.css'
-import Icon from "@mdi/react"
-import { mdiPlus } from '@mdi/js'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd'
 
-const ListCards = () => {
-  
+const ListCards = (props) => {
   const {cardsState, addCard} = useContext(TasksContext)
-  const [newCard, setNewCard] = useState('')
 
-  const addNewCard = (e) => {
-    e.preventDefault()
-    const newCardID = uuidv4()
-    if(!newCard) {
-      return
-    } return addCard({newCardID, newCard})
+  const addNewCard = (cardName) => {
+    addCard(cardName)
   }
 
   return (
-  <div className={styles.BoardPage_ListWrapper}>
-    {cardsState?.map(card => (
-      <Card key={uuidv4()} cardId={card.id} cardName={card.cardName} cardTasks={card.tasks}/>
-    ))}
-    <div className={styles.NewListCard_NewListWrapper}>
-      <AddFeatureForm 
-        addFeature={'Add another list'} 
-        placeholder={'Enter list title...'} 
-        buttonName={'Add list'}
-        addNewFeature={addNewCard}
-        setNewFeature={setNewCard}
-      />  
-    </div>
-    {/* <div className={styles.NewListCard_NewListWrapper}>
-      <div className={styles.NewListCard_AddMoreWrapper}>
-        <span className="material-icons"><Icon path={mdiPlus} title="Close" size={1}/></span>
-        Add another list
+    <DndProvider backend={HTML5Backend}>
+      <div className={styles.BoardPage_ListWrapper}>
+        {cardsState?.map(({ id, cardName, tasks }) => (
+          <Card key={id} cardId={id} cardName={cardName} cardTasks={tasks}/>
+        ))}
+        <div className={styles.NewListCard_NewListWrapper}>
+          <AddFeatureForm 
+            featureName={'Add another list'} 
+            placeholder={'Enter list title...'} 
+            buttonName={'Add list'}
+            onSubmit={addNewCard}
+          />  
+        </div>
       </div>
-    </div> */}
-  </div>
+    </DndProvider>
  )
 }
 

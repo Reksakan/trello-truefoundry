@@ -1,6 +1,6 @@
 import styles from './Navbar.module.css'
-import buttonIconPeople from '../../assets/button_icon_people.png'
-import buttonIconTwoArrowsRight from '../../assets/button_icon_2arrows_right.png'
+import buttonIconPeople from '../../../assets/button_icon_people.png'
+import buttonIconTwoArrowsRight from '../../../assets/button_icon_2arrows_right.png'
 
 const Navbar = () => {
   return (
