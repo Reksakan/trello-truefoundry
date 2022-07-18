@@ -1,8 +1,6 @@
 import TopStrip from '../TopStrip/TopStrip'
 import Title from '../Title/Title'
 import ListCards from '../../ListCards/ListCards'
-// import Card from '../../UI/Card/Card'
-// import Task from '../../UI/Task/Task'
 import styles from './Main.module.css'
 
 const Main = () => {
